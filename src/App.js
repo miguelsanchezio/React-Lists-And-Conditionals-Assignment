@@ -3,16 +3,27 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {
+    textLength: 0
+  }
+
+  outputTextLength = e => {
+    const textLength = e.target.value.length;
+    this.setState({ textLength: textLength })
+  }
+
   render() {
+    let textLengthOutput = null
+    if(this.state.textLength > 0) {
+      textLengthOutput = <p>Text length: {this.state.textLength}</p>
+    } else {
+      textLengthOutput = <p>Text length: 0</p>
+    }
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <input type="text" onChange={this.outputTextLength}/>
+        {textLengthOutput}
       </div>
     );
   }

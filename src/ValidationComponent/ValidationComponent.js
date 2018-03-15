@@ -4,14 +4,16 @@ const ValidationComponent = props => {
   const textLength = props.textLength;
 
   let textLengthMsg = null;
-  if(textLength < 5) {
-    textLengthMsg = 'Text length too short.'
-  } else if(textLength > 12) {
-    textLengthMsg = 'Text length too long.'
+  if(textLength <= 5) {
+    textLengthMsg = 'Text length is too short.'
+  } else {
+    textLengthMsg = 'Text is long enough.'
   }
 
   return (
-    <p>{textLengthMsg}</p>
+    <div>
+      <p>{textLengthMsg}</p>
+    </div>
   )
 }
 

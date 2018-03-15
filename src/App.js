@@ -6,8 +6,7 @@ import CharComponent from './CharComponent/CharComponent';
 
 class App extends Component {
   state = {
-    text: "",
-    textLength: 0
+    text: ""
   }
 
   outputTextLength = e => {
@@ -15,8 +14,7 @@ class App extends Component {
     const textLength = e.target.value.length;
 
     this.setState({
-      text: text,
-      textLength: textLength
+      text: text
     });
   }
 
@@ -27,21 +25,13 @@ class App extends Component {
     console.log(newTextString);
 
     this.setState({
-      text: newTextString,
-      textLength: textArray.length
+      text: newTextString
     });
   }
 
   render() {
-    let textLengthOutput = null
-    if(this.state.textLength > 0) {
-      textLengthOutput = <p>Text length: {this.state.textLength}</p>
-    } else {
-      textLengthOutput = <p>Text length: 0</p>
-    }
-
     let charactersList = null;
-    if(this.state.text.length > 0) {
+    if(this.state.text.length >= 6) {
       charactersList = (
         <div>
           {this.state.text.split('').map((char, index) => {
@@ -59,8 +49,8 @@ class App extends Component {
     return (
       <div className="App">
         <input type="text" onChange={this.outputTextLength} value={this.state.text}/>
-        {textLengthOutput}
-        <ValidationComponent textLength={this.state.textLength}/>
+        <div>Text length: {this.state.text.length}</div>
+        <ValidationComponent textLength={this.state.text.length}/>
         {charactersList}        
       </div>
     );

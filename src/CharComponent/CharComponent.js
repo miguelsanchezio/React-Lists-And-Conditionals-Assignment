@@ -6,7 +6,8 @@ const CharComponent = props => {
     padding: '16px',
     textAlign: 'center',
     margin: '5px',
-    border: '1px solid #c4c4c4'
+    border: '1px solid #c4c4c4',
+    cursor: 'pointer'
   }
 
   return (
